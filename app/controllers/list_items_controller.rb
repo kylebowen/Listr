@@ -14,6 +14,7 @@ class ListItemsController < ApplicationController
 
   # GET /list_items/new
   def new
+    @list = List.find(params[:list_id])
     @list_item = ListItem.new
   end
 
@@ -24,11 +25,12 @@ class ListItemsController < ApplicationController
   # POST /list_items
   # POST /list_items.json
   def create
-    @list_item = ListItem.new(list_item_params)
+    @list = List.find(params[:list_id])
+    @list_item = @list.list_items.create(list_item_params)
 
     respond_to do |format|
       if @list_item.save
-        format.html { redirect_to @list_item, notice: 'List item was successfully created.' }
+        format.html { redirect_to @list, notice: 'List item was successfully created.' }
         format.json { render :show, status: :created, location: @list_item }
       else
         format.html { render :new }
@@ -69,6 +71,6 @@ class ListItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_item_params
-      params.fetch(:list_item, {})
+      params.require(:list_item).permit(:description)
     end
 end
