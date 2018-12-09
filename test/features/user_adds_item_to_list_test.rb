@@ -1,7 +1,7 @@
-require "test_helper"
+require 'test_helper'
 
-feature "UserAddsItemToList" do
-  scenario "successfully" do
+feature 'UserAddsItemToList' do
+  scenario 'successfully' do
     create_new_list('New List')
     add_item_to_list('New Item')
 

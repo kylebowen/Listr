@@ -26,4 +26,18 @@ class ActiveSupport::TestCase
     fill_in 'Description', with: desc
     click_on 'Create List item'
   end
+
+  def update_list_item_description(desc)
+    within('.list-items') do
+      click_on 'Edit'
+    end
+    fill_in 'Description', with: desc
+    click_on 'Update List item'
+  end
+
+  def update_list_title(title)
+    click_on 'Edit'
+    fill_in 'Title', with: title
+    click_on 'Update List'
+  end
 end
