@@ -1,6 +1,32 @@
 // COLORS
-$islamic-green: hsl(123, 95%, 36%);
-$pastel-green: hsl(125, 55%, 68%);
+$burnt-yellow: hsl(54, 90%, 48%);
+$background-light: hsl(0, 0%, 20%);
+$dark-text: hsl(0, 0%, 16%);
+$red-text: hsl(5, 80%, 40%);
+$teal-text: hsl(170, 40%, 55%);
+$purple-text: hsl(278, 60%, 66%);
+$light-gray: hsl(0, 0%, 85%);
+
+body {
+  background-color: $dark-text;
+  color: $light-gray;
+}
+
+h1 {
+  color: $red-text;
+}
+
+label {
+  color: $purple-text;
+}
+
+p {
+  color: $teal-text;
+}
+
+a {
+  color: $burnt-yellow;
+}
 
 .heading {
   height: 50vh;
@@ -8,23 +34,26 @@ $pastel-green: hsl(125, 55%, 68%);
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: $pastel-green;
+  background-color: $background-light;
   color: #FFF;
 
   H1 {
     font-size: 5em;
+    // color: $red-text;
   }
-   
+
   p {
     font-size: 1.5em;
+    // color: $teal-text;
   }
-}
-
-a {
-  color: $islamic-green;
 }
 
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {
-  background-color: $islamic-green;
-  border-color: $islamic-green;
+  background-color: $burnt-yellow;
+  border-color: $burnt-yellow;
+  color: $dark-text;
+}
+
+input {
+  color: $teal-text;
 }
