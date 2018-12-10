@@ -1,6 +1,6 @@
 // COLORS
-$carrot-orange: hsl(29, 90%, 50%);
-$corvette: hsl(27, 72%, 70%);
+$islamic-green: hsl(123, 95%, 36%);
+$pastel-green: hsl(125, 55%, 68%);
 
 .heading {
   height: 50vh;
@@ -8,7 +8,7 @@ $corvette: hsl(27, 72%, 70%);
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: $corvette;
+  background-color: $pastel-green;
   color: #FFF;
 
   H1 {
@@ -21,10 +21,10 @@ $corvette: hsl(27, 72%, 70%);
 }
 
 a {
-  color: $carrot-orange;
+  color: $islamic-green;
 }
 
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {
-  background-color: $carrot-orange;
-  border-color: $carrot-orange;
+  background-color: $islamic-green;
+  border-color: $islamic-green;
 }
