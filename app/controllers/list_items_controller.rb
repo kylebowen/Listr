@@ -1,5 +1,6 @@
 class ListItemsController < ApplicationController
   before_action :set_list_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:new, :create]
 
   # GET /list_items
   # GET /list_items.json
@@ -24,11 +25,11 @@ class ListItemsController < ApplicationController
   # POST /list_items
   # POST /list_items.json
   def create
-    @list_item = ListItem.new(list_item_params)
+    @list_item = @list.list_items.create(list_item_params)
 
     respond_to do |format|
       if @list_item.save
-        format.html { redirect_to @list_item, notice: 'List item was successfully created.' }
+        format.html { redirect_to @list, notice: 'List item was successfully created.' }
         format.json { render :show, status: :created, location: @list_item }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class ListItemsController < ApplicationController
   def update
     respond_to do |format|
       if @list_item.update(list_item_params)
-        format.html { redirect_to @list_item, notice: 'List item was successfully updated.' }
+        format.html { redirect_to @list_item.list, notice: 'List item was successfully updated.' }
         format.json { render :show, status: :ok, location: @list_item }
       else
         format.html { render :edit }
@@ -56,19 +57,24 @@ class ListItemsController < ApplicationController
   def destroy
     @list_item.destroy
     respond_to do |format|
-      format.html { redirect_to list_items_url, notice: 'List item was successfully destroyed.' }
+      format.html { redirect_to list_url(@list_item.list), notice: 'List item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_list_item
       @list_item = ListItem.find(params[:id])
     end
 
+    def set_list
+      @list = List.find(params[:list_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_item_params
-      params.fetch(:list_item, {})
+      params.require(:list_item).permit(:description)
     end
 end

@@ -16,6 +16,7 @@ gem 'slim'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'minitest-rails'
+  gem 'minitest-rails-capybara'
 end
 
 group :development do
