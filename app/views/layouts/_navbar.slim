@@ -1,5 +1,7 @@
 .container
   .row
-    .column
-      = link_to 'All Lists', lists_path, class: 'button-clear'
-
+    .column.column-20
+      = link_to 'All Lists', lists_path, class: 'button button-clear'
+    - list_types.each do |type|
+      .column.column-20
+        = link_to type.to_s, lists_path(type: type), class: 'button button-clear'
