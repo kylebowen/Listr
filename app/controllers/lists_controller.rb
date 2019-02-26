@@ -1,8 +1,9 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_type, only: [:index, :create]
 
   def index
-    @lists = List.all
+    @lists = @type.all
   end
 
   def show
@@ -16,7 +17,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(list_params)
+    @list = @type.new(list_params)
 
     respond_to do |format|
       if @list.save
@@ -54,7 +55,11 @@ class ListsController < ApplicationController
       @list = List.find(params[:id])
     end
 
+    def set_type
+      @type = params[:type] ? params[:type].constantize : List
+    end
+
     def list_params
-      params.require(:list).permit(:title, :description)
+      params.require(:list).permit(:title, :description, :type)
     end
 end

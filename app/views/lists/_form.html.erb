@@ -11,8 +11,14 @@
     </div>
   <% end %>
 
+  <%= form.label :type %>
+  <%= form.collection_select :type, list_types, :to_str, :to_str %>
+
   <%= form.label :title %>
   <%= form.text_field :title %>
+
+  <%= form.label :description %>
+  <%= form.text_field :description %>
 
   <div class="actions">
     <%= form.submit %>
